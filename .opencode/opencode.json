@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "description": "Batch-Inference-Client für Fireworks API — 50% Kostenreduktion",
+  "tools": [
+    {
+      "name": "batch-status",
+      "description": "Zeigt Batch-Client Status: enabled, eligible_tasks, poll_interval.",
+      "params": [],
+      "command": ["python3", "-c",
+        "import sys; sys.path.insert(0,'/Users/jeremy/dev/stealth-batch'); from stealth_batch import get_batch_client; import json; c=get_batch_client(); print(json.dumps({'enabled':c.enabled,'eligible':c.eligible_keywords,'poll_interval':c.poll_interval}, indent=2))"]
+    },
+    {
+      "name": "batch-is-eligible",
+      "description": "Prüft ob Task für Batch-Verarbeitung geeignet ist.",
+      "params": [
+        {"name": "task_hint", "type": "string", "description": "Task-Beschreibung", "required": true}
+      ],
+      "command": ["python3", "-c",
+        "import sys; sys.path.insert(0,'/Users/jeremy/dev/stealth-batch'); from stealth_batch import get_batch_client; c=get_batch_client(); print('ELIGIBLE' if c.is_eligible(sys.argv[1] if len(sys.argv)>1 else '') else 'NOT ELIGIBLE')",
+        "{task_hint}"]
+    }
+  ]
+}
