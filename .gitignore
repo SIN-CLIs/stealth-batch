@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .graphify-cache/
 graphify-out/cache/
+
+# GitNexus Knowledge Graph Index
+.gitnexus/

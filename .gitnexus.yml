@@ -1,0 +1,34 @@
+version: "1.0"
+
+project:
+  name: "stealth-batch"
+  root: "."
+
+output:
+  path: ".gitnexus"
+
+analysis:
+  extract:
+    imports: true
+    calls: true
+    inheritance: true
+    type_references: true
+    dataflow: true
+  max_file_size_kb: 2048
+  ignore:
+    - "**/node_modules/**"
+    - "**/dist/**"
+    - "**/build/**"
+    - "**/__pycache__/**"
+    - "**/.venv/**"
+    - "**/.git/**"
+    - "**/graphify-out/**"
+    - "**/*.min.*"
+    - "**/*.generated.*"
+    - "**/logs/**"
+
+cache:
+  enabled: true
+  directory: ".gitnexus/cache"
+
+strict: false
